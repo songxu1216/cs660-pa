@@ -14,6 +14,11 @@ namespace db {
      */
     class Delete : public Operator {
         // TODO pa3.3: add private members
+    private:
+        TransactionId transactionId;
+        DbIterator *childIterator;
+        bool hasBeenCalled;
+        TupleDesc tupleDesc;
     protected:
         /**
          * Deletes tuples as they are read from the child operator. Deletes are

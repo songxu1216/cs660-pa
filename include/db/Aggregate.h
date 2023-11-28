@@ -16,6 +16,14 @@ namespace db {
      */
     class Aggregate : public Operator {
         // TODO pa3.2: add private members
+    private:
+        DbIterator *child;
+        int afield;
+        int gfield;
+        Aggregator::Op aop;
+        Aggregator *aggregator;
+        DbIterator *aggIterator;
+        bool openFlag;
     protected:
         /**
          * Returns the next tuple. If there is a group by field, then the first
@@ -59,7 +67,7 @@ namespace db {
          *         of the groupby field in the <b>OUTPUT</b> tuples If not, return
          *         null;
          */
-        std::string groupFieldName();
+        std::string groupFieldName() const;
 
         /**
          * @return the aggregate field
@@ -70,7 +78,7 @@ namespace db {
          * @return return the name of the aggregate field in the <b>OUTPUT</b>
          *         tuples
          */
-        std::string aggregateFieldName();
+        std::string aggregateFieldName() const;
 
         /**
          * @return return the aggregate operator

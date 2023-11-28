@@ -10,6 +10,9 @@ namespace db {
  */
     class Filter : public Operator {
         // TODO pa3.1: add private members
+        DbIterator *child;
+        Predicate* p;
+//        std::optional<Tuple> tup = std::nullopt;
     protected:
         /**
          * AbstractDbIterator *.readNext implementation. Iterates over tuples from the

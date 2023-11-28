@@ -11,6 +11,17 @@ namespace db {
  */
     class IntegerAggregator : public Aggregator {
         // TODO pa3.2: add private members
+    private:
+        int gbfield;
+        std::optional<Types::Type> gbfieldtype;
+        int afield;
+        Op op;
+
+        std::unordered_map<const Field*, int> aggregateData;
+        std::unordered_map<const Field*, int> count;
+        using AggFunc = std::function<int(int, int)>;
+        AggFunc aggFunc;
+
     public:
         /**
          * Aggregate constructor
